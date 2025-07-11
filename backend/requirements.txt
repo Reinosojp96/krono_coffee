@@ -15,4 +15,4 @@ PyJWT
 python-jose==3.3.0
 argon2-cffi
 psycopg2-binary
-passlib
+passlib==1.7.4

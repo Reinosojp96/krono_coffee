@@ -3,8 +3,9 @@ from typing import Optional, Union
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 from jose import JWTError, jwt
-from passlib.context import cryptcontext
+# from passlib.context import cryptcontext # ELIMINAR O COMENTAR: No se usa si usas argon2 directamente
 
+# Instancia del hasheador de contraseñas Argon2
 ph = PasswordHasher()
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -27,6 +28,7 @@ def get_password_hash(password: str) -> str:
     return ph.hash(password)
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+    # Importar settings aquí para evitar circular imports si settings también importa core_security
     from app.core.settings import settings
     to_encode = data.copy()
     if expires_delta:
@@ -38,14 +40,15 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     return encoded_jwt
 
 def decode_access_token(token: str) -> Union[dict, None]:
+    # Importar settings aquí para evitar circular imports
     from app.core.settings import settings
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         return payload
     except JWTError:
         return None
-    
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+# ELIMINAR ESTAS LÍNEAS DUPLICADAS DE passlib SI ESTÁS USANDO ARGON2
+# pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# def get_password_hash(password: str) -> str:
+#     return pwd_context.hash(password)
