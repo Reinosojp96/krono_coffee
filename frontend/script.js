@@ -1,7 +1,7 @@
 // script.js
 
 // Base URL de tu backend
-const API_BASE_URL ='https://krono-coffee.onrender.com/api/v1'; // Asegúrate de que esta URL sea correcta
+const API_BASE_URL ='https://krono-coffee-backend.onrender.com/api/v1'; // Asegúrate de que esta URL sea correcta
 
 // Elementos del DOM
 const loginBtn = document.getElementById('login-btn');
