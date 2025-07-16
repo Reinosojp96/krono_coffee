@@ -21,7 +21,6 @@ def create_db_and_tables():
     Crea todas las tablas definidas en los modelos de SQLAlchemy en la base de datos.
     Útil para el desarrollo inicial. En producción, se recomienda usar migraciones (Alembic).
     """
-    Base.metadata.drop_all(bind=engine) # Esta línea se ha añadido
     Base.metadata.create_all(bind=engine)
 
 @asynccontextmanager
