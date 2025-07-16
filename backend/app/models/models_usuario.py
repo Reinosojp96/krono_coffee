@@ -12,7 +12,7 @@ class Usuario(Base):
     """
     __tablename__ = "usuarios"
 
-    id = Column(String, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     document_type = Column(String(10))
     username = Column(String(50), unique=True, index=True, nullable=False)
     email = Column(String(100), unique=True, index=True, nullable=False)
