@@ -1,211 +1,341 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRONO COFFEE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="menu-item-card" data-category="CALIENTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Tinto+de+la+finca" alt="Tinto de la finca">
+    <h4>Tinto de la finca</h4>
+    <p class="description">Café tradicional de la finca</p>
+    <span class="price">$3.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="1" 
+            data-item-name="Tinto de la finca" 
+            data-item-price="3.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="CALIENTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Cafe+con+leche" alt="Cafe con leche">
+    <h4>Cafe con leche</h4>
+    <p class="description">Café clásico con leche</p>
+    <span class="price">$4.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="2" 
+            data-item-name="Cafe con leche" 
+            data-item-price="4.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="CALIENTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Americano" alt="Americano">
+    <h4>Americano</h4>
+    <p class="description">Café negro concentrado</p>
+    <span class="price">$3.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="3" 
+            data-item-name="Americano" 
+            data-item-price="3.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="CALIENTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Capuccino" alt="Capuccino">
+    <h4>Capuccino</h4>
+    <p class="description">Café con leche espumosa</p>
+    <span class="price">$5.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="4" 
+            data-item-name="Capuccino" 
+            data-item-price="5.00">
+        Añadir al Carrito
+    </button>
+</div>
 
-    <header class="header">
-        <div class="container flex justify-between items-center py-4">
-            <div class="logo">
-                <h1>KRONO COFFEE</h1>
-            </div>
-            <nav class="main-nav" id="main-nav">
-                <ul class="flex space-x-6">
-                    <li><a href="#hero" class="nav-link">Inicio</a></li>
-                    <li><a href="#about" class="nav-link">Nosotros</a></li>
-                    <li><a href="#menu" class="nav-link">Menú</a></li>
-                    <!-- Se elimina el enlace a "Promociones" de la navegación -->
-                    <li><a href="#gallery" class="nav-link">Galería</a></li>
-                    <li><a href="#order-section" class="nav-link" id="nav-cart-link">Carrito</a></li> <!-- El enlace a "Carrito" se mantiene -->
-                    <li><a href="#contact" class="nav-link">Contacto</a></li>
-                    <li><a href="#" id="login-btn" class="nav-link login-btn">Iniciar Sesión / Registrarse</a></li>
-                    <li class="hidden" id="dashboard-link"><a href="#dashboard" class="nav-link">Dashboard</a></li>
-                    <li class="hidden" id="logout-btn"><a href="#" class="nav-link">Cerrar Sesión</a></li>
-                </ul>
-            </nav>
-            <button class="hamburger-menu" id="hamburger-menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+<div class="menu-item-card" data-category="FRIO">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Cafe+Frio" alt="Cafe Frio">
+    <h4>Cafe frio</h4>
+    <p class="description">Café refrescante servido frío</p>
+    <span class="price">$4.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="5" 
+            data-item-name="Cafe frio" 
+            data-item-price="4.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="FRIO">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Latte+Frio" alt="Latte Frio">
+    <h4>Latte frio</h4>
+    <p class="description">Latte helado con tu sabor favorito</p>
+    <span class="price">$5.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="6" 
+            data-item-name="Latte frio" 
+            data-item-price="5.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="FRIO">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Frape+Sencillo" alt="Frape Sencillo">
+    <h4>Frape sencillo</h4>
+    <p class="description">Bebida helada cremosa</p>
+    <span class="price">$6.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="7" 
+            data-item-name="Frape sencillo" 
+            data-item-price="6.00">
+        Añadir al Carrito
+    </button>
+</div>
 
-    <main>
-        <section id="hero" class="hero-section flex items-center justify-center text-center">
-            <div class="hero-content">
-                <h2>El sabor de Sorrento al estilo de San Antonio</h2>
-                <p>Descubre una experiencia culinaria única.</p>
-                <button id="view-menu-btn" class="btn btn-primary mt-4">Explorar Menú</button>
-            </div>
-        </section>
+<div class="menu-item-card" data-category="JUGOS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Naranja" alt="Naranja">
+    <h4>Naranja</h4>
+    <p class="description">Jugo natural de naranja</p>
+    <span class="price">$4.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="8" 
+            data-item-name="Naranja" 
+            data-item-price="4.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="JUGOS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Araza" alt="Araza">
+    <h4>Araza</h4>
+    <p class="description">Jugo exótico de arazá</p>
+    <span class="price">$4.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="9" 
+            data-item-name="Araza" 
+            data-item-price="4.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="JUGOS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Mora" alt="Mora">
+    <h4>Mora</h4>
+    <p class="description">Delicioso jugo de mora</p>
+    <span class="price">$4.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="10" 
+            data-item-name="Mora" 
+            data-item-price="4.00">
+        Añadir al Carrito
+    </button>
+</div>
 
-        <section id="about" class="about-section py-16">
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Nuestra Historia</h3>
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="md:w-1/2">
-                        <p class="text-lg leading-relaxed mb-4">En el corazón de San Antonio, Krono Coffee nació de la pasión por el café y la rica tradición culinaria de la región. Inspirados en los sabores auténticos y la calidez de San Antonio, hemos creado un espacio donde cada taza cuenta una historia y cada plato es una obra de arte.</p>
-                        <p class="text-lg leading-relaxed">Nuestra misión es ofrecer una experiencia inigualable, combinando ingredientes frescos y locales con técnicas innovadoras. Te invitamos a ser parte de nuestra historia, disfrutando de un ambiente acogedor y un servicio excepcional.</p>
-                    </div>
-                    <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/3d2200/d4af37?text=Nuestra+Historia" alt="Krono Coffee Historia" class="rounded-lg shadow-lg w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="menu-item-card" data-category="AROMATICAS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Frutos+Rojos" alt="Frutos Rojos">
+    <h4>Frutos rojos</h4>
+    <p class="description">Aromática de frutos rojos</p>
+    <span class="price">$3.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="11" 
+            data-item-name="Frutos rojos" 
+            data-item-price="3.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="AROMATICAS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Manzanilla" alt="Manzanilla">
+    <h4>Manzanilla</h4>
+    <p class="description">Relajante aromática de manzanilla</p>
+    <span class="price">$2.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="12" 
+            data-item-name="Manzanilla" 
+            data-item-price="2.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="AROMATICAS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Jengibre" alt="Jengibre">
+    <h4>Jengibre</h4>
+    <p class="description">Aromática con toque de jengibre</p>
+    <span class="price">$3.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="13" 
+            data-item-name="Jengibre" 
+            data-item-price="3.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="AROMATICAS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Limon" alt="Limon">
+    <h4>Limon</h4>
+    <p class="description">Aromática fresca de limón</p>
+    <span class="price">$2.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="14" 
+            data-item-name="Limon" 
+            data-item-price="2.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="AROMATICAS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Miel" alt="Miel">
+    <h4>Miel</h4>
+    <p class="description">Aromática suave con miel</p>
+    <span class="price">$3.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="15" 
+            data-item-name="Miel" 
+            data-item-price="3.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="AROMATICAS">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Hierbabuena" alt="Hierbabuena">
+    <h4>Hierbabuena con o sin leche</h4>
+    <p class="description">Aromática refrescante de hierbabuena</p>
+    <span class="price">$3.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="16" 
+            data-item-name="Hierbabuena con o sin leche" 
+            data-item-price="3.50">
+        Añadir al Carrito
+    </button>
+</div>
 
-        <section id="menu" class="menu-section py-16">
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Nuestro Menú</h3>
-                <div class="menu-filters flex justify-center space-x-4 mb-8">
-                    <button class="filter-btn active" data-category="all">Todo</button>
-                    <button class="filter-btn" data-category="Bebidas Calientes">Café</button>
-                    <button class="filter-btn" data-category="Bebidas Frías">Té y Bebidas Frías</button>
-                    <button class="filter-btn" data-category="Panadería">Panadería</button>
-                    <button class="filter-btn" data-category="Postres">Postres</button>
-                    <button class="filter-btn" data-category="Snacks">Snacks</button>
-                </div>
-                <div id="menu-items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    <!-- Menu items will be loaded here by JavaScript -->
-                </div>
-            </div>
-        </section>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Pan+Leche" alt="Pan Leche">
+    <h4>Pan leche</h4>
+    <p class="description">Suave pan para acompañar</p>
+    <span class="price">$2.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="17" 
+            data-item-name="Pan leche" 
+            data-item-price="2.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Croasan" alt="Croasan">
+    <h4>Croasan</h4>
+    <p class="description">Delicioso croissant</p>
+    <span class="price">$3.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="18" 
+            data-item-name="Croasan" 
+            data-item-price="3.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Pan+Aliñado" alt="Pan Aliñado">
+    <h4>Pan aliñado</h4>
+    <p class="description">Pan con hierbas y especias</p>
+    <span class="price">$2.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="19" 
+            data-item-name="Pan aliñado" 
+            data-item-price="2.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Pan+Calentano" alt="Pan Calentano">
+    <h4>Pan calentano</h4>
+    <p class="description">Pan tradicional de la región</p>
+    <span class="price">$2.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="20" 
+            data-item-name="Pan calentano" 
+            data-item-price="2.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Almohabana" alt="Almohabana">
+    <h4>Almohabana</h4>
+    <p class="description">Pan de queso tradicional</p>
+    <span class="price">$3.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="21" 
+            data-item-name="Almohabana" 
+            data-item-price="3.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Hawaiano" alt="Hawaiano">
+    <h4>Hawaiano</h4>
+    <p class="description">Pan con jamón y piña</p>
+    <span class="price">$3.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="22" 
+            data-item-name="Hawaiano" 
+            data-item-price="3.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="ACOMPANANTE">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Sandwich+Jamon+Queso" alt="Sandwich Jamon Queso">
+    <h4>Sandwich de jamon y queso</h4>
+    <p class="description">Clásico sándwich de jamón y queso</p>
+    <span class="price">$4.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="23" 
+            data-item-name="Sandwich de jamon y queso" 
+            data-item-price="4.00">
+        Añadir al Carrito
+    </button>
+</div>
 
-        <section id="offers" class="offers-section py-16 hidden"> <!-- La sección de "Promociones" se mantiene, pero sin enlace directo en el nav -->
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Promociones Exclusivas</h3>
-                <div id="offers-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Offers will be loaded here by JavaScript for logged-in users -->
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery" class="gallery-section py-16">
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Nuestras Creaciones</h3>
-                <div class="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <img src="https://placehold.co/400x300/3d2200/d4af37?text=Caf%C3%A9+Especial" alt="Café Especial" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="https://placehold.co/400x300/3d2200/d4af37?text=Postre+Delicioso" alt="Postre Delicioso" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="https://placehold.co/400x300/3d2200/d4af37?text=Ambiente+Acogedor" alt="Ambiente Acogedor" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="https://placehold.co/400x300/3d2200/d4af37?text=Desayuno+Completo" alt="Desayuno Completo" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="https://placehold.co/400x300/3d2200/d4af37?text=Latte+Art" alt="Latte Art" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Sandwich+Gourmet" alt="Sandwich Gourmet" class="rounded-lg shadow-md w-full h-auto object-cover">
-                </div>
-            </div>
-        </section>
-
-        <section id="order-section" class="order-section py-16"> <!-- Esta sección siempre visible en HTML -->
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Tu Carrito de Compras</h3>
-                <div id="cart-items" class="mb-8 bg-gray-800 p-6 rounded-lg shadow-inner">
-                    <ul id="cart-list" class="divide-y divide-gray-700">
-                        <!-- Cart items will be displayed here -->
-                        <li class="text-gray-400 py-2">Tu carrito está vacío.</li>
-                    </ul>
-                    <div class="text-right mt-6 text-3xl font-bold text-white">Total: $<span id="cart-total">0.00</span></div>
-                </div>
-                <button id="place-order-btn" class="btn btn-primary w-full md:w-auto">Confirmar Pedido</button>
-            </div>
-        </section>
-
-        <section id="dashboard" class="dashboard-section py-16 hidden">
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Dashboard de Pedidos</h3>
-                <div id="orders-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Orders will be loaded here by JavaScript for admin/employee -->
-                    <p class="text-center text-gray-400 col-span-full">Cargando pedidos...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section py-16">
-            <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Contáctanos</h3>
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2 bg-gray-800 p-8 rounded-lg shadow-lg">
-                        <h4 class="text-xl font-semibold mb-4 text-white">Información de Contacto</h4>
-                        <p class="text-gray-300 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Dirección: Cra 4 #8-83, Llendo al polideportivo principal, San Antonio, Tolima</p>
-                        <p class="text-gray-300 mb-2"><i class="fas fa-phone mr-2"></i>Teléfono: +57 3028519529 o al +57 3132123300</p>
-                        <p class="text-gray-300 mb-2"><i class="fas fa-envelope mr-2"></i>Email: kronoCoffe@gmail.com</p>
-                        <h4 class="text-xl font-semibold mt-6 mb-4 text-white">Horarios</h4>
-                        <p class="text-gray-300 mb-2">Martes - Domingo: 06:30 AM - 8:30 PM</p>
-                    </div>
-                    <div class="md:w-1/2 bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center justify-center">
-                        <h4 class="text-xl font-semibold mb-4 text-white">¿Tienes preguntas? ¡Contáctanos por WhatsApp!</h4>
-                        <!-- Botón de WhatsApp -->
-                        <a href="https://wa.me/573028519529?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20Krono%20Coffee."
-                        target="_blank"
-                        class="btn btn-primary md:w-auto flex items-center justify-center">
-                            <i class="fab fa-whatsapp mr-2"></i> Haz clic para abrir WhatsApp.
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer py-8">
-        <div class="container mx-auto px-4 text-center text-gray-400">
-            <div class="footer-social mb-4">
-                <a href="https://www.instagram.com/cafeteriakronocoffee?utm_source=qr&igsh=c3BtMGIzdGcybG1s " target="_blank" class="text-gray-400 hover:text-white mx-2"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p>&copy; 2025 KRONO COFFEE. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Modales -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 class="text-2xl font-bold mb-6 text-center text-white">Iniciar Sesión / Registrarse</h2>
-            <form id="login-form" class="space-y-4">
-                <input type="email" id="login-email" placeholder="Correo electrónico" class="form-input" required>
-                <input type="password" id="login-password" placeholder="Contraseña" class="form-input" required>
-                <button type="submit" class="btn btn-primary w-full">Iniciar Sesión</button>
-            </form>
-            <p class="text-center text-gray-400 mt-4">¿No tienes cuenta? <a href="#" id="show-register" class="text-secondary-color hover:underline">Regístrate aquí</a></p>
-            <div id="login-message" class="mt-4 text-center text-red-500"></div>
-        </div>
-    </div>
-
-    <div id="register-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 class="text-2xl font-bold mb-6 text-center text-white">Registrarse</h2>
-            <form id="register-form" class="space-y-4">
-                <select id="register-doc-type" class="form-input" required>
-                    <option value="">Selecciona tipo de documento</option>
-                    <option value="CC">Cédula de ciudadanía</option>
-                    <option value="TI">Tarjeta de identidad</option>
-                    <option value="PAS">Pasaporte</option>
-                    <option value="OTRO">Otro</option>
-                </select>
-                <input type="text" id="register-id" placeholder="Número de identificación" class="form-input" required>
-                <input type="text" id="register-fullname" placeholder="Nombre completo" class="form-input" required>
-                <input type="text" id="register-username" placeholder="Nombre de usuario" class="form-input" required>
-                <input type="email" id="register-email" placeholder="Correo electrónico" class="form-input" required>
-                <input type="password" id="register-password" placeholder="Contraseña" class="form-input" required>
-                <button type="submit" class="btn btn-primary w-full">Registrarse</button>
-            </form>
-            <p class="text-center text-gray-400 mt-4">¿Ya tienes cuenta? <a href="#" id="show-login" class="text-secondary-color hover:underline">Inicia sesión aquí</a></p>
-            <div id="register-message" class="mt-4 text-center text-red-500"></div>
-        </div>
-    </div>
-
-    <div id="message-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="message-title" class="text-2xl font-bold mb-6 text-center text-white"></h2>
-            <div id="message-text" class="text-center text-gray-300"></div>
-            <button class="btn btn-primary w-full mt-4 close-button">Aceptar</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<div class="menu-item-card" data-category="DOMINGO_ESPECIAL">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Migao" alt="Migao">
+    <h4>Migao</h4>
+    <p class="description">Plato especial del domingo</p>
+    <span class="price">$8.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="24" 
+            data-item-name="Migao" 
+            data-item-price="8.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="DOMINGO_ESPECIAL">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Sandwich+Especial" alt="Sandwich Especial">
+    <h4>Sandwich</h4>
+    <p class="description">Sandwich especial de domingo</p>
+    <span class="price">$6.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="25" 
+            data-item-name="Sandwich" 
+            data-item-price="6.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="DOMINGO_ESPECIAL">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Combo+Brownie" alt="Combo Brownie">
+    <h4>Combo brownie con leche</h4>
+    <p class="description">Brownie con un vaso de leche</p>
+    <span class="price">$7.00</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="26" 
+            data-item-name="Combo brownie con leche" 
+            data-item-price="7.00">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="DOMINGO_ESPECIAL">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Jugo+Zanahoria" alt="Jugo Zanahoria">
+    <h4>Jugo de zanahoria</h4>
+    <p class="description">Jugo fresco de zanahoria</p>
+    <span class="price">$4.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="27" 
+            data-item-name="Jugo de zanahoria" 
+            data-item-price="4.50">
+        Añadir al Carrito
+    </button>
+</div>
+<div class="menu-item-card" data-category="DOMINGO_ESPECIAL">
+    <img src="https://placehold.co/300x200/3d2200/d4af37?text=Avena" alt="Avena">
+    <h4>Avena</h4>
+    <p class="description">Avena caliente o fría</p>
+    <span class="price">$3.50</span>
+    <button class="btn btn-primary add-to-cart-btn mt-auto" 
+            data-item-id="28" 
+            data-item-name="Avena" 
+            data-item-price="3.50">
+        Añadir al Carrito
+    </button>
+</div>
