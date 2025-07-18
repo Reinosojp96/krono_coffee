@@ -76,7 +76,7 @@ a:hover {
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     border: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    min-width: 120px;
+    /* min-width: 120px; -- Eliminado de aquí para manejarlo en media queries */
 }
 
 .btn-primary {
@@ -265,7 +265,7 @@ a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     font-weight: 600;
-    min-width: 100px;
+    /* min-width: 100px; -- Eliminado para manejarlo en media queries */
     /* white-space: nowrap; -- ELIMINADO para permitir el salto de línea del texto */
 }
 
@@ -595,18 +595,17 @@ a:hover {
         overflow-x: hidden;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 0 1rem; /* Asegura padding a los lados */
-        gap: 10px; /* Espacio entre botones */
+        padding: 0 1rem;
+        gap: 10px;
     }
 
     .filter-btn {
         padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
-        flex-basis: auto; /* Permite que el botón se ajuste a su contenido */
-        flex-grow: 1; /* Permite que los botones crezcan para llenar el espacio */
-        flex-shrink: 1; /* Permite que los botones se encojan si es necesario */
-        min-width: 120px; /* Un mínimo para que no sean demasiado pequeños */
-        /* Eliminado: width: calc(50% - 5px); para dar más flexibilidad */
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 45%; /* Ajuste clave: ancho mínimo para permitir 2 por fila */
     }
 
     .menu-item-card img {
