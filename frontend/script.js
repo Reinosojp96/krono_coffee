@@ -192,15 +192,17 @@ async function handleRegister(event) {
 
 async function fetchMenu() {
     try {
+        console.log('Intentando cargar el menú desde:', `${API_BASE_URL}/menu/menu`);
         const items = await apiRequest('/menu/menu');
+        console.log('Menú cargado exitosamente:', items);
         allMenuItems = items;
         displayMenuItems(allMenuItems, 'all');
         populateCategoryFilters(allMenuItems);
         populateAdminCategorySelect(allMenuItems);
     } catch (e) {
-        console.error('Error al cargar el menú:', e);
+        console.error('Error al cargar el menú en fetchMenu():', e);
         menuItemsGrid.innerHTML =
-            '<p class="text-center text-red-500 col-span-full">Error al cargar el menú.</p>';
+            '<p class="text-center text-red-500 col-span-full">Error al cargar el menú. Inténtalo de nuevo más tarde.</p>';
     }
 }
 
@@ -263,7 +265,7 @@ function displayMenuItems(items, category = 'all') {
         const card = document.createElement('div');
         card.classList.add('menu-item-card');
         card.innerHTML = `
-            <img src="${item.image_url || 'https://placehold.co/300x200/3d2200/d4af37?text=No+Image'}" alt="${item.name}">
+            <img src="${item.image_url || 'https://placehold.co/300x200/3d2200/d4af37?text=No+Image'}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/300x200/FF0000/FFFFFF?text=Error+Imagen'; console.error('Error al cargar imagen:', '${item.image_url}');">
             <h4>${item.name}</h4>
             <p class="description">${item.description}</p>
             <span class="price">$${item.price.toFixed(2)}</span>
