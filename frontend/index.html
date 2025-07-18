@@ -22,9 +22,11 @@
                     <li><a href="#menu" class="nav-link">Menú</a></li>
                     <!-- Se elimina el enlace a "Promociones" de la navegación -->
                     <li><a href="#gallery" class="nav-link">Galería</a></li>
+                    
                     <li><a href="#order-section" class="nav-link" id="nav-cart-link">Carrito</a></li> <!-- El enlace a "Carrito" se mantiene -->
                     <li><a href="#contact" class="nav-link">Contacto</a></li>
                     <li><a href="#" id="login-btn" class="nav-link login-btn">Iniciar Sesión / Registrarse</a></li>
+                    <li class="hidden" id="admin-btn"><a href="#admin-panel" class="nav-link">Administrador</a></li>
                     <li class="hidden" id="dashboard-link"><a href="#dashboard" class="nav-link">Dashboard</a></li>
                     <li class="hidden" id="logout-btn"><a href="#" class="nav-link">Cerrar Sesión</a></li>
                 </ul>
@@ -97,6 +99,43 @@
                     <img src="https://placehold.co/300x200/3d2200/d4af37?text=Sandwich+Gourmet" alt="Sandwich Gourmet" class="rounded-lg shadow-md w-full h-auto object-cover">
                 </div>
             </div>
+        </section>
+
+        <section id="admin-panel" class="admin-panel-section py-16 hidden">
+        <div class="container mx-auto px-4">
+            <h3 class="section-title text-center mb-8">Panel de Administración</h3>
+            <form id="admin-form" class="space-y-6 bg-gray-800 p-6 rounded-lg shadow-md text-white">
+            <div>
+                <label for="nombre" class="block mb-2">Nombre del Producto</label>
+                <input type="text" id="nombre" name="nombre" class="form-input w-full" required>
+            </div>
+            <div>
+                <label for="descripcion" class="block mb-2">Descripción</label>
+                <textarea id="descripcion" name="descripcion" class="form-input w-full" rows="3" required></textarea>
+            </div>
+            <div>
+                <label for="precio" class="block mb-2">Precio</label>
+                <input type="number" id="precio" name="precio" class="form-input w-full" step="0.01" required>
+            </div>
+            <div>
+                <label for="categoria" class="block mb-2">Categoría</label>
+                <select id="categoria" name="categoria" class="form-input w-full" required>
+                <option value="">Selecciona una categoría</option>
+                <option value="Bebidas Calientes">Bebidas Calientes</option>
+                <option value="Bebidas Frías">Bebidas Frías</option>
+                <option value="Panadería">Panadería</option>
+                <option value="Postres">Postres</option>
+                <option value="Snacks">Snacks</option>
+                </select>
+            </div>
+            <div>
+                <label for="imagen" class="block mb-2">URL de la Imagen</label>
+                <input type="url" id="imagen" name="imagen" class="form-input w-full" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Producto</button>
+            <div id="admin-form-message" class="mt-4 text-center text-green-400"></div>
+            </form>
+        </div>
         </section>
 
         <section id="order-section" class="order-section py-16"> <!-- Esta sección siempre visible en HTML -->
