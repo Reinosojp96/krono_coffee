@@ -500,4 +500,46 @@ mainNav.querySelectorAll('.nav-link').forEach(link => {
 
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
+
+     // ———————— LÓGICA DE ADMIN ————————
+    const adminBtn      = document.getElementById('admin-btn');
+    const adminPanel    = document.getElementById('admin-panel');
+    const adminForm     = document.getElementById('admin-form');
+    const formMessage   = document.getElementById('admin-form-message');
+
+     // 1) Mostrar botón y panel solo si el rol es ADMIN
+    if (currentUser && currentUser.role === 'admin') {
+        adminBtn.classList.remove('hidden');
+    }
+
+     // 2) Al hacer clic en "Administrador", mostrar/ocultar el panel
+    adminBtn.addEventListener('click', e => {
+        e.preventDefault();
+        const isHidden = adminPanel.classList.toggle('hidden');
+        if (!isHidden) window.scrollTo({ top: adminPanel.offsetTop, behavior: 'smooth' });
+    });
+
+     // 3) Al enviar el formulario de admin, llamar al endpoint POST
+    adminForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        const token = getToken();
+        const payload = {
+            name:        document.getElementById('nombre').value,
+            description: document.getElementById('descripcion').value,
+            price:       parseFloat(document.getElementById('precio').value),
+            category:    document.getElementById('categoria').value,
+            image_url:   document.getElementById('imagen').value,
+            is_available:true
+        };
+        try {
+            await apiRequest('/admin/menu', 'POST', payload, true);
+            formMessage.textContent = '✅ Producto agregado correctamente.';
+            adminForm.reset();
+             // (Opcional) refrescar menú visible:
+            fetchMenu();
+        } catch {
+            formMessage.textContent = '❌ Error al agregar el producto.';
+        }
+    });
+     // ————————————————————————————————
 });
