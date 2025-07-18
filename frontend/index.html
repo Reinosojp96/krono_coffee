@@ -7,6 +7,405 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for better visual centering and layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex-grow: 1;
+        }
+        .container {
+            max-width: 1280px; /* Equivalent to max-w-screen-xl in Tailwind */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* Default padding */
+            padding-right: 1rem; /* Default padding */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        /* Existing custom styles from your style.css might override some Tailwind.
+           Ensure style.css is correctly linked and its rules don't conflict. */
+        .header {
+            background-color: #1a1a1a; /* Dark background for header */
+            color: #d4af37; /* Gold/yellow text for contrast */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: #d4af37;
+            font-weight: 400;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .hamburger-menu {
+            display: none; /* Hidden by default on larger screens */
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #d4af37;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: #1a1a1a;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem 0;
+            }
+
+            .main-nav ul li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger on small screens */
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('https://placehold.co/1920x1080/3d2200/d4af37?text=Krono+Coffee+Hero') no-repeat center center/cover;
+            height: 600px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #d4af37;
+            color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b840;
+            color: #000;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #d4af37;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #d4af37;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .menu-filters .filter-btn {
+            background-color: #333;
+            color: #d4af37;
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .menu-filters .filter-btn:hover {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .menu-filters .filter-btn.active {
+            background-color: #d4af37;
+            color: #1a1a1a;
+        }
+
+        .menu-item-card {
+            background-color: #333;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .menu-item-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-card .description {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Allows description to take available space */
+        }
+
+        .menu-item-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 1rem; /* Space above price */
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+        .gallery-grid img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Admin Panel */
+        .admin-panel-section {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .form-input {
+            background-color: #444;
+            border: 1px solid #555;
+            color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #d4af37;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Dashboard Section */
+        .dashboard-section {
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+        .order-card {
+            background-color: #333;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            color: #fff;
+        }
+
+        .order-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .order-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.8rem;
+            border-top: 1px solid #555;
+            padding-top: 0.8rem;
+        }
+
+        .order-card ul li {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-bottom: 0.2rem;
+        }
+
+        .order-card .status-pending { color: #d4af37; }
+        .order-card .status-completed { color: #4CAF50; }
+        .order-card .status-cancelled { color: #F44336; }
+
+        .order-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            border-radius: 0.4rem;
+        }
+
+        .btn-secondary {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #666;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover {
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-social a {
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #d4af37;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -20,9 +419,15 @@
                     <li><a href="#about" class="nav-link">Nosotros</a></li>
                     <li><a href="#menu" class="nav-link">Menú</a></li>
                     <li><a href="#gallery" class="nav-link">Galería</a></li>
-                    <li><a href="#order-section" class="nav-link" id="nav-cart-link">Carrito</a></li>
                     <li><a href="#contact" class="nav-link">Contacto</a></li>
-                    <li><a href="#" id="login-btn" class="nav-link login-btn">Iniciar Sesión / Registrarse</a></li>
+                    <li>
+                        <!-- Botón de WhatsApp en el menú de navegación -->
+                        <a href="https://wa.me/573028519529?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20Krono%20Coffee."
+                            target="_blank"
+                            class="nav-link btn btn-primary flex items-center px-4 py-2 rounded-lg">
+                            <i class="fab fa-whatsapp mr-2"></i> Contáctanos
+                        </a>
+                    </li>
                     <li class="hidden" id="admin-btn"><a href="#admin-panel" class="nav-link">Administrador</a></li>
                     <li class="hidden" id="dashboard-link"><a href="#dashboard" class="nav-link">Dashboard</a></li>
                     <li class="hidden" id="logout-btn"><a href="#" class="nav-link">Cerrar Sesión</a></li>
@@ -70,7 +475,7 @@
             </div>
         </section>
 
-        <section id="offers" class="offers-section py-16 hidden"> <!-- La sección de "Promociones" se mantiene, pero sin enlace directo en el nav -->
+        <section id="offers" class="offers-section py-16 hidden">
             <div class="container mx-auto px-4">
                 <h3 class="section-title text-center mb-8">Promociones Exclusivas</h3>
                 <div id="offers-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -83,64 +488,77 @@
             <div class="container mx-auto px-4">
                 <h3 class="section-title text-center mb-8">ESPECIALES</h3>
                 <div class="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <img src="el-migao-colombiano-se-acompana-con-amasijos-tipicos-1269855.jpg" alt="MIGAO" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="ChatGPT Image 18 jul 2025, 10_57_24 a.m..png" alt="combo brownie con leche
-" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="jugo_de_zanahoria_y_limon_para_adelgazar_46387_orig.jpg" alt="Jugo de zanahoria" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="avena.jpg" alt="Avena" class="rounded-lg shadow-md w-full h-auto object-cover">
-                    <img src="Latte_with_winged_tulip_art.jpg" alt="Latte Art" class="rounded-lg shadow-md w-full h-auto object-cover">
+                    <!-- Especial 1: Migao -->
+                    <div class="menu-item-card">
+                        <img src="migao.jpg" alt="MIGAO" class="rounded-lg shadow-md w-full h-auto object-cover">
+                        <h4>Migao</h4>
+                        <p class="description">Plato tradicional colombiano, ideal para un desayuno contundente.</p>
+                        <span class="price">$8.50</span>
+                    </div>
+                    <!-- Especial 2: Combo Brownie con Leche -->
+                    <div class="menu-item-card">
+                        <img src="combo_de_brownie_con_leche.png" alt="Combo Brownie con Leche" class="rounded-lg shadow-md w-full h-auto object-cover">
+                        <h4>Combo Brownie con Leche</h4>
+                        <p class="description">Delicioso brownie casero acompañado de un vaso de leche fresca.</p>
+                        <span class="price">$6.00</span>
+                    </div>
+                    <!-- Especial 3: Jugo de Zanahoria -->
+                    <div class="menu-item-card">
+                        <img src="jugo_de_zanahoria.jpg" alt="Jugo de Zanahoria" class="rounded-lg shadow-md w-full h-auto object-cover">
+                        <h4>Jugo de Zanahoria</h4>
+                        <p class="description">Jugo natural y refrescante de zanahoria, lleno de vitaminas.</p>
+                        <span class="price">$4.25</span>
+                    </div>
+                    <!-- Especial 4: Avena -->
+                    <div class="menu-item-card">
+                        <img src="avena.jpg" alt="Avena" class="rounded-lg shadow-md w-full h-auto object-cover">
+                        <h4>Avena</h4>
+                        <p class="description">Refrescante avena, perfecta para un desayuno o merienda ligera.</p>
+                        <span class="price">$5.50</span>
+                    </div>
+                    <!-- Especial 5: Latte Art (ejemplo) -->
+                    <div class="menu-item-card">
+                        <img src="Latte_with_winged_tulip_art.jpg" alt="Latte Art" class="rounded-lg shadow-md w-full h-auto object-cover">
+                        <h4>Latte Art</h4>
+                        <p class="description">Disfruta de la belleza y el sabor de nuestro arte en café.</p>
+                        <span class="price">$4.75</span>
+                    </div>
                 </div>
             </div>
         </section>
+
+
 
         <section id="admin-panel" class="admin-panel-section py-16 hidden">
-        <div class="container mx-auto px-4">
-            <h3 class="section-title text-center mb-8">Panel de Administración</h3>
-            <form id="admin-form" class="space-y-6 bg-gray-800 p-6 rounded-lg shadow-md text-white">
-            <div>
-                <label for="nombre" class="block mb-2">Nombre del Producto</label>
-                <input type="text" id="nombre" name="nombre" class="form-input w-full" required>
-            </div>
-            <div>
-                <label for="descripcion" class="block mb-2">Descripción</label>
-                <textarea id="descripcion" name="descripcion" class="form-input w-full" rows="3" required></textarea>
-            </div>
-            <div>
-                <label for="precio" class="block mb-2">Precio</label>
-                <input type="number" id="precio" name="precio" class="form-input w-full" step="0.01" required>
-            </div>
-            <div>
-                <label for="categoria" class="block mb-2">Categoría</label>
-                <select id="categoria" name="categoria" class="form-input w-full" required>
-                <option value="">Selecciona una categoría</option>
-                <option value="Bebidas Calientes">Bebidas Calientes</option>
-                <option value="Bebidas Frías">Bebidas Frías</option>
-                <option value="Panadería">Panadería</option>
-                <option value="Postres">Postres</option>
-                <option value="Snacks">Snacks</option>
-                </select>
-            </div>
-            <div>
-                <label for="imagen" class="block mb-2">URL de la Imagen</label>
-                <input type="url" id="imagen" name="imagen" class="form-input w-full" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar Producto</button>
-            <div id="admin-form-message" class="mt-4 text-center text-green-400"></div>
-            </form>
-        </div>
-        </section>
-
-        <section id="order-section" class="order-section py-16"> <!-- Esta sección siempre visible en HTML -->
             <div class="container mx-auto px-4">
-                <h3 class="section-title text-center mb-8">Tu Carrito de Compras</h3>
-                <div id="cart-items" class="mb-8 bg-gray-800 p-6 rounded-lg shadow-inner">
-                    <ul id="cart-list" class="divide-y divide-gray-700">
-                        <!-- Cart items will be displayed here -->
-                        <li class="text-gray-400 py-2">Tu carrito está vacío.</li>
-                    </ul>
-                    <div class="text-right mt-6 text-3xl font-bold text-white">Total: $<span id="cart-total">0.00</span></div>
-                </div>
-                <button id="place-order-btn" class="btn btn-primary w-full md:w-auto">Confirmar Pedido</button>
+                <h3 class="section-title text-center mb-8">Panel de Administración</h3>
+                <form id="admin-form" class="space-y-6 bg-gray-800 p-6 rounded-lg shadow-md text-white">
+                    <div>
+                        <label for="nombre" class="block mb-2">Nombre del Producto</label>
+                        <input type="text" id="nombre" name="nombre" class="form-input w-full" required>
+                    </div>
+                    <div>
+                        <label for="descripcion" class="block mb-2">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" class="form-input w-full" rows="3" required></textarea>
+                    </div>
+                    <div>
+                        <label for="precio" class="block mb-2">Precio</label>
+                        <input type="number" id="precio" name="precio" class="form-input w-full" step="0.01" required>
+                    </div>
+                    <div>
+                        <label for="categoria" class="block mb-2">Categoría</label>
+                        <select id="categoria" name="categoria" class="form-input w-full" required>
+                            <option value="">Selecciona una categoría</option>
+                            <!-- Las opciones de categoría se cargarán aquí dinámicamente por JavaScript -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="imagen" class="block mb-2">URL de la Imagen</label>
+                        <input type="url" id="imagen" name="imagen" class="form-input w-full" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                    <div id="admin-form-message" class="mt-4 text-center text-green-400"></div>
+                </form>
             </div>
         </section>
 
@@ -148,7 +566,6 @@
             <div class="container mx-auto px-4">
                 <h3 class="section-title text-center mb-8">Dashboard de Pedidos</h3>
                 <div id="orders-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Orders will be loaded here by JavaScript for admin/employee -->
                     <p class="text-center text-gray-400 col-span-full">Cargando pedidos...</p>
                 </div>
             </div>
@@ -168,7 +585,6 @@
                     </div>
                     <div class="md:w-1/2 bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center justify-center">
                         <h4 class="text-xl font-semibold mb-4 text-white">¿Tienes preguntas? ¡Contáctanos por WhatsApp!</h4>
-                        <!-- Botón de WhatsApp -->
                         <a href="https://wa.me/573028519529?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20Krono%20Coffee."
                         target="_blank"
                         class="btn btn-primary md:w-auto flex items-center justify-center">
@@ -180,45 +596,6 @@
         </section>
     </main>
 
-    <!-- Modales -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 class="text-2xl font-bold mb-6 text-center text-white">Iniciar Sesión / Registrarse</h2>
-            <form id="login-form" class="space-y-4">
-                <input type="email" id="login-email" placeholder="Correo electrónico" class="form-input" required>
-                <input type="password" id="login-password" placeholder="Contraseña" class="form-input" required>
-                <button type="submit" class="btn btn-primary w-full">Iniciar Sesión</button>
-            </form>
-            <p class="text-center text-gray-400 mt-4">¿No tienes cuenta? <a href="#" id="show-register" class="text-secondary-color hover:underline">Regístrate aquí</a></p>
-            <div id="login-message" class="mt-4 text-center text-red-500"></div>
-        </div>
-    </div>
-
-    <div id="register-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 class="text-2xl font-bold mb-6 text-center text-white">Registrarse</h2>
-            <form id="register-form" class="space-y-4">
-                <select id="register-doc-type" class="form-input" required>
-                    <option value="">Selecciona tipo de documento</option>
-                    <option value="CC">Cédula de ciudadanía</option>
-                    <option value="TI">Tarjeta de identidad</option>
-                    <option value="PAS">Pasaporte</option>
-                    <option value="OTRO">Otro</option>
-                </select>
-                <input type="text" id="register-id" placeholder="Número de identificación" class="form-input" required>
-                <input type="text" id="register-fullname" placeholder="Nombre completo" class="form-input" required>
-                <input type="text" id="register-username" placeholder="Nombre de usuario" class="form-input" required>
-                <input type="email" id="register-email" placeholder="Correo electrónico" class="form-input" required>
-                <input type="password" id="register-password" placeholder="Contraseña" class="form-input" required>
-                <button type="submit" class="btn btn-primary w-full">Registrarse</button>
-            </form>
-            <p class="text-center text-gray-400 mt-4">¿Ya tienes cuenta? <a href="#" id="show-login" class="text-secondary-color hover:underline">Inicia sesión aquí</a></p>
-            <div id="register-message" class="mt-4 text-center text-red-500"></div>
-        </div>
-    </div>
-
     <div id="message-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -228,7 +605,6 @@
         </div>
     </div>
 
-    
     <footer class="footer py-8">
         <div class="container mx-auto px-4 text-center text-gray-400">
             <div class="footer-social mb-4">
@@ -237,7 +613,6 @@
             <p>&copy; 2025 KRONO COFFEE. Todos los derechos reservados.</p>
         </div>
     </footer>
-
 
     <script src="script.js"></script>
 </body>

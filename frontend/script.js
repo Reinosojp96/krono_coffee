@@ -1,34 +1,21 @@
 // script.js
 const API_BASE_URL = 'https://krono-coffee-backend.onrender.com/api/v1';
 
-const loginBtn = document.getElementById('login-btn');
-const logoutBtn = document.getElementById('logout-btn');
-const loginModal = document.getElementById('login-modal');
-const registerModal = document.getElementById('register-modal');
 const messageModal = document.getElementById('message-modal');
 const messageTitle = document.getElementById('message-title');
 const messageText = document.getElementById('message-text');
 const closeButtons = document.querySelectorAll('.close-button');
-const showRegisterLink = document.getElementById('show-register');
-const showLoginLink = document.getElementById('show-login');
-const loginForm = document.getElementById('login-form');
-const registerForm = document.getElementById('register-form');
-const loginMessage = document.getElementById('login-message');
-const registerMessage = document.getElementById('register-message');
+
 const menuItemsGrid = document.getElementById('menu-items-grid');
 const menuFiltersContainer = document.getElementById('menu-filters');
-const offersSection = document.getElementById('offers');
-const orderSection = document.getElementById('order-section');
-const cartList = document.getElementById('cart-list');
-const cartTotal = document.getElementById('cart-total');
-const placeOrderBtn = document.getElementById('place-order-btn');
+const offersSection = document.getElementById('offers'); // Se mantiene oculta por defecto
+
 const dashboardLink = document.getElementById('dashboard-link');
 const dashboardSection = document.getElementById('dashboard');
 const ordersList = document.getElementById('orders-list');
 const viewMenuBtn = document.getElementById('view-menu-btn');
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mainNav = document.getElementById('main-nav');
-const navCartLink = document.getElementById('nav-cart-link');
 
 const adminBtn = document.getElementById('admin-btn');
 const adminPanel = document.getElementById('admin-panel');
@@ -36,34 +23,13 @@ const adminForm = document.getElementById('admin-form');
 const adminFormMessage = document.getElementById('admin-form-message');
 const adminCategorySelect = document.getElementById('categoria');
 
-let currentUser = null;
-let cart = [];
+let currentUser = null; // Se mantiene para el rol de admin/employee
 let allMenuItems = [];
-
-function showModal(modal) {
-    modal.classList.remove('hidden');
-}
-
-function hideModal(modal) {
-    modal.classList.add('hidden');
-}
 
 function showMessage(title, text) {
     messageTitle.textContent = title;
     messageText.innerHTML = text;
-    showModal(messageModal);
-}
-
-function saveToken(token) {
-    localStorage.setItem('access_token', token);
-}
-
-function getToken() {
-    return localStorage.getItem('access_token');
-}
-
-function removeToken() {
-    localStorage.removeItem('access_token');
+    messageModal.classList.remove('hidden');
 }
 
 async function apiRequest(endpoint, method = 'GET', body = null, requiresAuth = false, contentType = 'application/json') {
@@ -74,9 +40,9 @@ async function apiRequest(endpoint, method = 'GET', body = null, requiresAuth = 
         headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
     if (requiresAuth) {
-        const token = getToken();
+        const token = localStorage.getItem('access_token');
         if (!token) {
-            showMessage('Error de Autenticación', 'No estás autenticado. Por favor, inicia sesión.');
+            showMessage('Error de Autenticación', 'No estás autorizado. Por favor, asegúrate de tener permisos de administrador/empleado.');
             throw new Error('No authentication token found.');
         }
         headers['Authorization'] = `Bearer ${token}`;
@@ -104,90 +70,44 @@ async function apiRequest(endpoint, method = 'GET', body = null, requiresAuth = 
 }
 
 async function updateUI() {
-    const token = getToken();
+    const token = localStorage.getItem('access_token');
+    const logoutBtnElement = document.getElementById('logout-btn'); // Obtener referencia aquí
+
     if (token) {
-        loginBtn.classList.add('hidden');
-        logoutBtn.classList.remove('hidden');
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        currentUser = { username: payload.sub, role: payload.role };
-        offersSection.classList.add('hidden');
-        orderSection.classList.remove('hidden');
-        navCartLink.classList.remove('hidden');
-        if (currentUser.role === 'admin' || currentUser.role === 'employee') {
-            dashboardLink.classList.remove('hidden');
-            adminBtn.classList.remove('hidden');
-            await fetchOrders();
-        } else {
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            currentUser = { username: payload.sub, role: payload.role };
+            
+            offersSection.classList.add('hidden'); // Siempre oculta ahora
+
+            if (currentUser.role === 'admin' || currentUser.role === 'employee') {
+                dashboardLink.classList.remove('hidden');
+                adminBtn.classList.remove('hidden');
+                // fetchOrders(); // Se llama solo al hacer clic en el dashboard link
+            } else {
+                dashboardLink.classList.add('hidden');
+                adminBtn.classList.add('hidden');
+                adminPanel.classList.add('hidden'); // Asegurarse de que el panel de admin también se oculte
+            }
+            logoutBtnElement.classList.remove('hidden'); // Mostrar botón de cerrar sesión
+        } catch (e) {
+            console.error('Error al decodificar token o establecer currentUser:', e);
+            localStorage.removeItem('access_token'); // Token inválido, lo borramos
+            currentUser = null;
+            logoutBtnElement.classList.add('hidden');
             dashboardLink.classList.add('hidden');
             adminBtn.classList.add('hidden');
+            adminPanel.classList.add('hidden');
         }
     } else {
         currentUser = null;
-        loginBtn.classList.remove('hidden');
-        logoutBtn.classList.add('hidden');
-        offersSection.classList.add('hidden');
+        logoutBtnElement.classList.add('hidden');
         dashboardLink.classList.add('hidden');
         dashboardSection.classList.add('hidden');
         adminBtn.classList.add('hidden');
-        orderSection.classList.remove('hidden');
-        navCartLink.classList.remove('hidden');
+        adminPanel.classList.add('hidden');
     }
     await fetchMenu();
-    updateCartUI();
-}
-
-async function handleLogin(event) {
-    event.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    try {
-        const data = await apiRequest(
-            '/auth/token',
-            'POST',
-            { username: email, password },
-            false,
-            'application/x-www-form-urlencoded'
-        );
-        saveToken(data.access_token);
-        await updateUI();
-        hideModal(loginModal);
-        showMessage('Inicio de Sesión Exitoso', '¡Bienvenido de nuevo a Krono Coffee!');
-        loginMessage.textContent = '';
-        loginForm.reset();
-    } catch (e) {
-        loginMessage.textContent = e.message || 'Error al iniciar sesión. Verifica tus credenciales.';
-    }
-}
-
-async function handleRegister(event) {
-    event.preventDefault();
-    const username = document.getElementById('register-username').value;
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-    const fullName = document.getElementById('register-fullname').value;
-    const id = document.getElementById('register-id').value;
-    const documentType = document.getElementById('register-doc-type').value;
-    if (!documentType || !id || !fullName) {
-        registerMessage.textContent = 'Por favor completa todos los campos requeridos.';
-        return;
-    }
-    try {
-        await apiRequest('/auth/register', 'POST', {
-            id,
-            document_type: documentType,
-            full_name: fullName,
-            username,
-            email,
-            password
-        });
-        hideModal(registerModal);
-        showMessage('Registro Exitoso', '¡Regístrate e inicia sesión!');
-        registerMessage.textContent = '';
-        registerForm.reset();
-        showModal(loginModal);
-    } catch (e) {
-        registerMessage.textContent = e.message || 'Error al registrarse.';
-    }
 }
 
 async function fetchMenu() {
@@ -269,105 +189,10 @@ function displayMenuItems(items, category = 'all') {
             <h4>${item.name}</h4>
             <p class="description">${item.description}</p>
             <span class="price">$${item.price.toFixed(2)}</span>
-            <button class="btn btn-primary add-to-cart-btn mt-auto"
-                    data-item-id="${item.id}"
-                    data-item-name="${item.name}"
-                    data-item-price="${item.price}">
-                Añadir al Carrito
-            </button>
+            <!-- Botón de Añadir al Carrito eliminado -->
         `;
         menuItemsGrid.appendChild(card);
     });
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.removeEventListener('click', addToCart);
-        btn.addEventListener('click', addToCart);
-    });
-}
-
-function addToCart(event) {
-    const id = event.target.dataset.itemId;
-    const name = event.target.dataset.itemName;
-    const price = parseFloat(event.target.dataset.itemPrice);
-    const existing = cart.find(i => i.id == id);
-    if (existing) {
-        existing.quantity++;
-    } else {
-        cart.push({ id, name, price, quantity: 1 });
-    }
-    updateCartUI();
-    showMessage('Producto Añadido', `<p>${name} agregado.</p>`);
-}
-
-function updateCartUI() {
-    cartList.innerHTML = '';
-    let total = 0;
-    if (!currentUser || currentUser.role !== 'client') {
-        cartList.innerHTML =
-            '<li class="text-gray-400 py-2">Inicia sesión como cliente para el carrito.</li>';
-        cartTotal.textContent = '0.00';
-        placeOrderBtn.classList.add('hidden');
-        return;
-    }
-    if (!cart.length) {
-        cartList.innerHTML =
-            '<li class="text-gray-400 py-2">Tu carrito está vacío.</li>';
-        placeOrderBtn.classList.add('hidden');
-    } else {
-        cart.forEach(item => {
-            total += item.price * item.quantity;
-            const li = document.createElement('li');
-            li.classList.add('py-2');
-            li.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <span>${item.name} x${item.quantity}</span>
-                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
-                    <button class="remove-from-cart" data-item-id="${item.id}">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </div>
-            `;
-            cartList.appendChild(li);
-        });
-        placeOrderBtn.classList.remove('hidden');
-        document.querySelectorAll('.remove-from-cart').forEach(btn => {
-            btn.addEventListener('click', () => {
-                cart = cart.filter(i => i.id != btn.dataset.itemId);
-                updateCartUI();
-            });
-        });
-    }
-    cartTotal.textContent = total.toFixed(2);
-}
-
-async function placeOrder() {
-    if (!cart.length) {
-        showMessage('Carrito Vacío', 'No puedes pedir con el carrito vacío.');
-        return;
-    }
-    const items = cart.map(i => ({
-        menu_item_id: i.id,
-        name: i.name,
-        quantity: i.quantity,
-        price_at_order: i.price
-    }));
-    const total = parseFloat(cartTotal.textContent);
-    try {
-        const res = await apiRequest('/orders/', 'POST', { items, total }, true);
-        let receipt = `
-            <p><strong>Pedido #${res.order_id}</strong></p>
-            <p><strong>Cliente:</strong> ${currentUser.username}</p>
-            <ul>
-                ${res.items.map(i => `<li>${i.name} x${i.quantity}</li>`).join('')}
-            </ul>
-            <p><strong>Total:</strong> $${res.total.toFixed(2)}</p>
-        `;
-        showMessage('Pedido Confirmado', receipt);
-        cart = [];
-        updateCartUI();
-    } catch (e) {
-        console.error('Error al Realizar Pedido:', e);
-        showMessage('Error al Realizar Pedido', e.message);
-    }
 }
 
 async function fetchOrders() {
@@ -427,22 +252,19 @@ async function updateOrderStatus(id, status) {
     }
 }
 
-loginBtn.addEventListener('click', () => showModal(loginModal));
-closeButtons.forEach(b => b.addEventListener('click', e => {
-    if (e.target.closest('#login-modal')) hideModal(loginModal);
-    if (e.target.closest('#register-modal')) hideModal(registerModal);
-    if (e.target.closest('#message-modal')) hideModal(messageModal);
+// Event listener para cerrar el modal de mensaje
+closeButtons.forEach(b => b.addEventListener('click', () => {
+    messageModal.classList.add('hidden');
 }));
-showRegisterLink.addEventListener('click', e => { e.preventDefault(); hideModal(loginModal); showModal(registerModal); });
-showLoginLink.addEventListener('click', e => { e.preventDefault(); hideModal(registerModal); showModal(loginModal); });
-loginForm.addEventListener('submit', handleLogin);
-registerForm.addEventListener('submit', handleRegister);
-logoutBtn.addEventListener('click', () => {
-    removeToken();
+
+// Event listener para el botón de cerrar sesión
+document.getElementById('logout-btn').addEventListener('click', () => {
+    localStorage.removeItem('access_token');
     currentUser = null;
     updateUI();
     showMessage('Sesión Cerrada','Has cerrado sesión.');
 });
+
 viewMenuBtn.addEventListener('click', () => document.getElementById('menu').scrollIntoView({behavior:'smooth'}));
 
 hamburgerMenu.addEventListener('click', () => {
