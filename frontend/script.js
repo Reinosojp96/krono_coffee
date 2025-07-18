@@ -16,7 +16,7 @@ const registerForm = document.getElementById('register-form');
 const loginMessage = document.getElementById('login-message');
 const registerMessage = document.getElementById('register-message');
 const menuItemsGrid = document.getElementById('menu-items-grid');
-const menuFiltersContainer = document.getElementById('menu-filters'); // Referencia al contenedor de los botones de filtro
+const menuFiltersContainer = document.getElementById('menu-filters');
 const offersSection = document.getElementById('offers');
 const orderSection = document.getElementById('order-section');
 const cartList = document.getElementById('cart-list');
@@ -30,16 +30,15 @@ const hamburgerMenu = document.getElementById('hamburger-menu');
 const mainNav = document.getElementById('main-nav');
 const navCartLink = document.getElementById('nav-cart-link');
 
-// Admin Panel specific elements
 const adminBtn = document.getElementById('admin-btn');
 const adminPanel = document.getElementById('admin-panel');
 const adminForm = document.getElementById('admin-form');
 const adminFormMessage = document.getElementById('admin-form-message');
-const adminCategorySelect = document.getElementById('categoria'); // El select de categoría en el formulario de admin
+const adminCategorySelect = document.getElementById('categoria');
 
 let currentUser = null;
 let cart = [];
-let allMenuItems = []; // Almacena todos los ítems del menú para filtrar
+let allMenuItems = [];
 
 function showModal(modal) {
     modal.classList.remove('hidden');
@@ -133,7 +132,7 @@ async function updateUI() {
         orderSection.classList.remove('hidden');
         navCartLink.classList.remove('hidden');
     }
-    await fetchMenu(); // Siempre cargar el menú y las categorías
+    await fetchMenu();
     updateCartUI();
 }
 
@@ -195,9 +194,9 @@ async function fetchMenu() {
     try {
         const items = await apiRequest('/menu/menu');
         allMenuItems = items;
-        displayMenuItems(allMenuItems, 'all'); // Mostrar todos los ítems por defecto
-        populateCategoryFilters(allMenuItems); // Poblar los botones de filtro
-        populateAdminCategorySelect(allMenuItems); // Poblar el select del admin
+        displayMenuItems(allMenuItems, 'all');
+        populateCategoryFilters(allMenuItems);
+        populateAdminCategorySelect(allMenuItems);
     } catch (e) {
         console.error('Error al cargar el menú:', e);
         menuItemsGrid.innerHTML =
@@ -205,16 +204,13 @@ async function fetchMenu() {
     }
 }
 
-// Función para poblar los botones de filtro de categoría
 function populateCategoryFilters(menuItems) {
-    // Obtener categorías únicas y ordenarlas alfabéticamente
     const categories = [...new Set(menuItems.map(item => item.category))].sort();
     
-    menuFiltersContainer.innerHTML = ''; // Limpiar filtros existentes
+    menuFiltersContainer.innerHTML = '';
 
-    // Botón "Todo"
     const allButton = document.createElement('button');
-    allButton.classList.add('filter-btn', 'active'); // Activar "Todo" por defecto
+    allButton.classList.add('filter-btn', 'active');
     allButton.textContent = 'Todo';
     allButton.dataset.category = 'all';
     allButton.addEventListener('click', () => {
@@ -224,11 +220,9 @@ function populateCategoryFilters(menuItems) {
     });
     menuFiltersContainer.appendChild(allButton);
 
-    // Botones para cada categoría
     categories.forEach(category => {
         const button = document.createElement('button');
         button.classList.add('filter-btn');
-        // Formatea el nombre de la categoría para mostrarlo de forma legible (ej. "DOMINGO_ESPECIAL" -> "Domingo Especial")
         button.textContent = category.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
         button.dataset.category = category;
         button.addEventListener('click', () => {
@@ -240,11 +234,9 @@ function populateCategoryFilters(menuItems) {
     });
 }
 
-// Función para poblar el select de categoría en el formulario de administración
 function populateAdminCategorySelect(menuItems) {
     const categories = [...new Set(menuItems.map(item => item.category))].sort();
     
-    // Limpiar opciones existentes excepto la primera "Selecciona una categoría"
     while (adminCategorySelect.options.length > 1) {
         adminCategorySelect.remove(1);
     }
@@ -256,7 +248,6 @@ function populateAdminCategorySelect(menuItems) {
         adminCategorySelect.appendChild(option);
     });
 }
-
 
 function displayMenuItems(items, category = 'all') {
     menuItemsGrid.innerHTML = '';
@@ -285,14 +276,12 @@ function displayMenuItems(items, category = 'all') {
         `;
         menuItemsGrid.appendChild(card);
     });
-    // Re-attach listeners every time the menu is displayed
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.removeEventListener('click', addToCart); // Evitar duplicados
+        btn.removeEventListener('click', addToCart);
         btn.addEventListener('click', addToCart);
     });
 }
 
-// La función addToCart fue movida fuera de displayMenuItems para ser reutilizable
 function addToCart(event) {
     const id = event.target.dataset.itemId;
     const name = event.target.dataset.itemName;
@@ -306,7 +295,6 @@ function addToCart(event) {
     updateCartUI();
     showMessage('Producto Añadido', `<p>${name} agregado.</p>`);
 }
-
 
 function updateCartUI() {
     cartList.innerHTML = '';
@@ -375,6 +363,7 @@ async function placeOrder() {
         cart = [];
         updateCartUI();
     } catch (e) {
+        console.error('Error al Realizar Pedido:', e);
         showMessage('Error al Realizar Pedido', e.message);
     }
 }
@@ -454,13 +443,6 @@ logoutBtn.addEventListener('click', () => {
 });
 viewMenuBtn.addEventListener('click', () => document.getElementById('menu').scrollIntoView({behavior:'smooth'}));
 
-// Los listeners de filterButtons ahora se adjuntan dentro de populateCategoryFilters
-// filterButtons.forEach(btn => btn.addEventListener('click', () => {
-//     filterButtons.forEach(b=>b.classList.remove('active'));
-//     btn.classList.add('active');
-//     displayMenuItems(allMenuItems, btn.dataset.category);
-// }));
-
 hamburgerMenu.addEventListener('click', () => {
     mainNav.classList.toggle('active');
     const icon = hamburgerMenu.querySelector('i');
@@ -479,17 +461,6 @@ mainNav.querySelectorAll('.nav-link').forEach(link =>
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
 
-    // adminBtn y adminPanel ya están definidos globalmente
-    // const adminBtn = document.getElementById('admin-btn'); // Eliminado: ya es global
-    // const adminPanel = document.getElementById('admin-panel'); // Eliminado: ya es global
-    // const adminForm = document.getElementById('admin-form'); // Eliminado: ya es global
-    // const formMessage = document.getElementById('admin-form-message'); // Eliminado: ya es global
-
-    // La visibilidad del botón adminBtn se maneja en updateUI()
-    // if (currentUser && currentUser.role === 'admin') {
-    //     adminBtn.classList.remove('hidden');
-    // }
-
     adminBtn.addEventListener('click', e => {
         e.preventDefault();
         const hidden = adminPanel.classList.toggle('hidden');
@@ -502,18 +473,18 @@ document.addEventListener('DOMContentLoaded', () => {
             name: document.getElementById('nombre').value,
             description: document.getElementById('descripcion').value,
             price: parseFloat(document.getElementById('precio').value),
-            category: adminCategorySelect.value, // Usar la referencia global
+            category: adminCategorySelect.value,
             image_url: document.getElementById('imagen').value,
             is_available: true
         };
         try {
             await apiRequest('/admin/menu', 'POST', payload, true);
-            adminFormMessage.textContent = '✅ Producto agregado correctamente.'; // Usar la referencia global
+            adminFormMessage.textContent = '✅ Producto agregado correctamente.';
             adminForm.reset();
-            fetchMenu(); // Volver a cargar el menú para actualizar la lista y los filtros
+            fetchMenu();
         } catch (e) {
             console.error('Error al agregar producto:', e);
-            adminFormMessage.textContent = '❌ Error al agregar el producto.'; // Usar la referencia global
+            adminFormMessage.textContent = '❌ Error al agregar el producto.';
         }
     });
 });
