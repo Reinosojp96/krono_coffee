@@ -1,9 +1,5 @@
-/* style.css */
-
-/* Fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
 
-/* Variables CSS para colores */
 :root {
     --primary-color: #0e0800;
     --secondary-color: #d4af37;
@@ -14,7 +10,6 @@
     --white: #ffffff;
 }
 
-/* Estilos generales */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -69,7 +64,6 @@ a:hover {
     color: var(--white);
 }
 
-/* Botones */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -107,7 +101,6 @@ a:hover {
     transform: translateY(-2px);
 }
 
-/* Formularios */
 .form-input, .form-textarea, .form-select {
     width: 100%;
     padding: 0.8rem;
@@ -124,7 +117,6 @@ a:hover {
     border-color: var(--secondary-color);
 }
 
-/* Header */
 .header {
     background-color: var(--primary-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -170,7 +162,6 @@ a:hover {
     border-radius: 5px;
 }
 
-/* Hamburger Menu */
 .hamburger-menu {
     display: none;
     background: none;
@@ -182,7 +173,6 @@ a:hover {
     z-index: 1001;
 }
 
-/* Hero Section */
 .hero-section {
     background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Tinto_Colombiano.jpg/1200px-Tinto_Colombiano.jpg') no-repeat center center/cover;
     height: 80vh;
@@ -222,7 +212,6 @@ a:hover {
     margin-bottom: 2rem;
 }
 
-/* Section Titles */
 .section-title {
     font-size: 3rem;
     color: var(--secondary-color);
@@ -241,13 +230,11 @@ a:hover {
     border-radius: 2px;
 }
 
-/* About Section */
 .about-section {
     background-color: var(--dark-gray);
     color: var(--text-color);
 }
 
-/* Menu Section (Shop) */
 .menu-section {
     background-color: var(--background-color);
 }
@@ -278,7 +265,8 @@ a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     font-weight: 600;
-    min-width: 100px;
+    min-width: 100px; /* Mantener un min-width para que no se hagan demasiado pequeños */
+    white-space: nowrap; /* Evita que el texto dentro del botón se envuelva */
 }
 
 .filter-btn:hover {
@@ -603,20 +591,19 @@ a:hover {
     }
 
     .menu-filters {
-        display: flex; /* Asegura que sea flex en móvil */
+        display: flex;
         overflow-x: hidden;
         flex-wrap: wrap;
         justify-content: center;
-        padding-left: 0.5rem; /* Añadido padding horizontal */
-        padding-right: 0.5rem; /* Añadido padding horizontal */
-        gap: 0.5rem;
+        padding: 0 1rem; /* Ajustado a 1rem para que coincida con el contenedor principal */
+        gap: 10px;
     }
 
     .filter-btn {
         padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
         flex-basis: auto;
-        max-width: calc(50% - 0.5rem); /* Ajuste para 2 columnas con gap */
+        width: calc(50% - 5px); /* Permite dos por fila con un pequeño gap */
     }
 
     .menu-item-card img {
@@ -680,7 +667,7 @@ a:hover {
     .filter-btn {
         padding: 0.6rem 1rem;
         font-size: 0.8rem;
-        max-width: 100%; /* Forzar una columna en pantallas muy pequeñas */
+        width: 100%; /* Forzar una columna en pantallas muy pequeñas */
     }
     .menu-item-card h4 {
         font-size: 1.2rem;
