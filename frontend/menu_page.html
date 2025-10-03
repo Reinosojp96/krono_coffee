@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coffee Pan - Nuestro Menú</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#d46c11",
+          "background-light": "#f8f7f6",
+          "background-dark": "#221810",
+          "text-light": "#181411",
+          "text-dark": "#f8f7f6",
+          "subtle-light": "#897461",
+          "subtle-dark": "#a19183",
+          "border-light": "#e6e0db",
+          "border-dark": "#3a2d21"
+        },
+        fontFamily: {
+          "display": ["Epilogue", "sans-serif"]
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+      },
+    },
+  }
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex flex-col min-h-screen">
+  
+<header class="border-b border-border-light dark:border-border-dark">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center gap-3">
+        <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_6_543)">
+            <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+            <path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+          </g>
+          <defs><clipPath id="clip0_6_543"><rect fill="white" height="48" width="48"></rect></clipPath></defs>
+        </svg>
+        <h1 class="text-xl font-bold">Coffee Pan</h1>
+        
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="./home_page.html">Inicio</a>
+        <a class="text-sm font-medium text-primary" href="./menu_page.html">Nuestro Menú</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="./history_page.html">Nuestra Historia</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="./contact_page.html">Contacto</a>
+      </nav>
+
+      <a class="inline-flex items-center justify-center gap-3 px-8 py-3 bg-primary text-white font-bold rounded-lg shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105" href="https://wa.me/573101234567?text=Hola,%20tengo%20una%20pregunta%20sobre%20Krono%20Coffee." target="_blank">
+      </svg>Ordena por WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl font-bold mb-8">Nuestro Menú</h2>
+
+
+    <div class="border-b border-border-light dark:border-border-dark mb-8">
+      <div id="menu-tabs" class="flex space-x-8">
+
+      </div>
+    </div>
+
+
+    <section class="mb-12">
+      <h3 id="category-title" class="text-2xl font-bold mb-6">Todos</h3>
+      <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+      </div>
+    </section>
+  </div>
+</main>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const menuData = [
+
+    { id: 1, name: "Tinto", description: "", price: 1000, category: "BEBIDAS", imageUrl: "https://alponiente.com/wp-content/uploads/2024/01/2024.01.16.-Cuanto-cuesta-un-tinto-JFG-e1705501831693.jpg" },
+    { id: 2, name: "Café en Leche", description: "", price: 1500, category: "BEBIDAS", imageUrl: "https://i.blogs.es/421374/cafe-con-leche2/450_1000.jpg" },
+    { id: 3, name: "Aromática", description: "", price: 1000, category: "BEBIDAS", imageUrl: "https://www.elespectador.com/resizer/v2/EFJFFNNORRH7RHWHERPHURWIVA.jpg?auth=5e443b3ad014b3d5b69cc8c721b0a93b309c364192ca29decf97117d8f1b4495&width=910&height=606&smart=true&quality=70" },
+    { id: 4, name: "Agua Mini", description: "", price: 1000, category: "BEBIDAS", imageUrl: "https://drogueriasantamaria.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTM2NTEsInB1ciI6ImJsb2JfaWQifX0=--b04fa7a5076f963d61df28941f676ef9ca2bd51b/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbODAwLDgwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--1420d7fd3d20057726f0ef3c0043db24ca0403be/18.jpg?locale=es" },
+    { id: 5, name: "Pony Malta", description: "", price: 2000, category: "BEBIDAS", imageUrl: "https://http2.mlstatic.com/D_NQ_NP_658741-MCO87917437138_072025-O.webp" },
+    { id: 6, name: "Coca-Cola 500ml", description: "", price: 3000, category: "BEBIDAS", imageUrl: "https://p.turbosquid.com/ts-thumb/TW/2g571G/Lt/bottle_dark/jpg/1634345773/600x600/fit_q87/2553fd6f8eff3d9ea316ea800db56f7ffe64a4f4/bottle_dark.jpg" },
+    { id: 7, name: "Coca-Cola Mini", description: "", price: 2000, category: "BEBIDAS", imageUrl: "https://www.superemet.com/Images/products/1050x1050/7501055328345/7501055328345_1.jpg" },
+    { id: 8, name: "Jugo Hit", description: "", price: 2600, category: "BEBIDAS", imageUrl: "https://multidulces.com.co/wp-content/uploads/2024/01/jugo-hit-500.png" },
+    { id: 9, name: "Agua 600ml", description: "", price: 2000, category: "BEBIDAS", imageUrl: "https://api.lalicorera.com/storage/productos/licores/83602490-agua-cristal.webp" },
+    { id: 10, name: "Gatorade", description: "", price: 3800, category: "BEBIDAS", imageUrl: "https://placehold.co/160x160/3d2200/d4af37?text=Bebida" },
+    { id: 11, name: "Agua en Bolsa", description: "300ml", price: 300, category: "BEBIDAS", imageUrl: "https://www.lamejor.com.co/img/p_agua.png" },
+    { id: 12, name: "Pan de Bono", description: "", price: 1000, category: "PANADERÍA", imageUrl: "https://i.ytimg.com/vi/9qXkJR7x1hw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDHww6AO6dTKH6-biYPeOX-gU2k8g" },
+    { id: 13, name: "Pan Cuadrado", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://supermercadoslacanasta.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTAxNjgxLCJwdXIiOiJibG9iX2lkIn19--1a715ad17e58f891cbd6c0f6ee197d14ef150fe7/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbNjAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--121ebfcd4293f99df590ac1a60ec2d53d6f75b42/13074?locale=es" },
+    { id: 14, name: "Pan Calentano", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://ditexcon.com.co/wp-content/uploads/2020/02/1calentano-.jpg" },
+    { id: 15, name: "Pan Leche", description: "", price: 400, category: "PANADERÍA", imageUrl: "pandeleche.jpg" },
+    { id: 16, name: "Pan Rollo", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://b2bmarketplace.procolombia.co/sites/default/files/styles/slider_image_product/public/2019-23/pan_rollo_1.png" },
+    { id: 17, name: "Pan Mojicón", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://placehold.co/160x160/3d2200/d4af37?text=Pan" },
+    { id: 18, name: "Bolsa de Té (5u)", description: "", price: 2000, category: "PANADERÍA", imageUrl: "https://placehold.co/160x160/3d2200/d4af37?text=Té" },
+    { id: 19, name: "Galleta de Coco", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://www.infobae.com/new-resizer/cCb-eRXtR3IhQ5nLta_cg4WZ0MA=/arc-anglerfish-arc2-prod-infobae/public/MYVN25FXGREGZATCP4MBB3TK6E.jpg" },
+    { id: 20, name: "Croissant (Queso)", description: "Grande", price: 1000, category: "PANADERÍA", imageUrl: "111111111111.jpg" },
+    { id: 21, name: "Pan Concha", description: "", price: 1000, category: "PANADERÍA", imageUrl: "https://horneadoslaquinta.com.co/wp-content/uploads/2022/03/concha.png" },
+    { id: 23, name: "Pan Queso", description: "Grande", price: 2500, category: "PANADERÍA", imageUrl: "https://peterpan24horas.com/storage/2019/07/P2200.jpg" },
+    { id: 24, name: "Almojábana", description: "", price: 1000, category: "PANADERÍA", imageUrl: "almojabana.jpg" },
+    { id: 25, name: "Hojaldra", description: "", price: 1000, category: "PANADERÍA", imageUrl: "https://elsuper.com.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTgxNjc2NSwicHVyIjoiYmxvYl9pZCJ9fQ==--3a4d7c0294544339a3ec8360401c0e18fdb83419/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbNjAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--121ebfcd4293f99df590ac1a60ec2d53d6f75b42/28773?locale=es" },
+    { id: 26, name: "Tostadas", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://tortasytortas.com.co/images/virtuemart/product/resized/13_640x200.jpg" },
+    { id: 27, name: "Pera Roja", description: "", price: 500, category: "PANADERÍA", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC8NDzCQ045_sBZ5Dc8WYHaVelo3PjEfD4aKzUBEDZ-0aIHi4h_i-BlJyezkTEBXG5i6A&usqp=CAU" },
+    { id: 28, name: "Cuca", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://www.vanguardia.com/resizer/v2/prepararan-la-cuca-mas-grande-de-santander-un-homenaje-al-sabor-de-las-abuelas-LNIDCH55QZFUTKDKQHHYNFUODU.jpg?auth=abeaa6a61932b95d123244e7ac12ce17a9397e8363865bd4cf61b7ee98715743&smart=true&width=1200&height=800&quality=70" }
+];
+
+
+
+  const tabsContainer = document.getElementById('menu-tabs');
+  const grid = document.getElementById('menu-grid');
+  const categoryTitle = document.getElementById('category-title');
+
+
+  const getCategories = () => ['TODOS', ...Array.from(new Set(menuData.map(i => i.category)))];
+
+
+  const formatPrice = (price) => {
+
+    return `$${Number(price).toFixed(2)}`;
+  };
+
+  const createCard = (item) => {
+    const div = document.createElement('div');
+    div.className = 'group';
+    div.innerHTML = `
+      <div class="w-full aspect-square bg-cover bg-center rounded-xl mb-4 overflow-hidden" style='background-image: url("${item.imageUrl || ''}");'></div>
+      <p class="font-semibold">${item.name}</p>
+      <p class="text-sm text-subtle-light dark:text-subtle-dark">${formatPrice(item.price)}</p>
+    `;
+
+    return div;
+  };
+
+  const renderItems = (items) => {
+    grid.innerHTML = '';
+    if (!items || items.length === 0) {
+      grid.innerHTML = '<p class="text-subtle-light dark:text-subtle-dark">No hay productos en esta categoría.</p>';
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    items.forEach(item => fragment.appendChild(createCard(item)));
+    grid.appendChild(fragment);
+  };
+
+  const renderTabs = () => {
+    tabsContainer.innerHTML = '';
+    const cats = getCategories();
+    cats.forEach((cat, idx) => {
+      const a = document.createElement('a');
+      a.href = '#';
+      a.className = 'py-3 text-sm font-bold border-b-2 transition-colors';
+      if (idx === 0) {
+        a.classList.add('border-primary', 'text-primary');
+      } else {
+        a.classList.add('border-transparent', 'text-subtle-light', 'dark:text-subtle-dark', 'hover:text-primary', 'dark:hover:text-primary', 'hover:border-primary');
+      }
+      a.textContent = cat;
+      a.dataset.category = cat;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        tabsContainer.querySelectorAll('a').forEach(el => {
+          el.classList.remove('border-primary', 'text-primary');
+          el.classList.add('border-transparent', 'text-subtle-light', 'dark:text-subtle-dark');
+        });
+        a.classList.remove('border-transparent', 'text-subtle-light', 'dark:text-subtle-dark');
+        a.classList.add('border-primary', 'text-primary');
+
+        categoryTitle.textContent = cat === 'TODOS' ? 'Todos' : cat;
+        const items = cat === 'TODOS' ? menuData : menuData.filter(i => i.category === cat);
+        renderItems(items);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      tabsContainer.appendChild(a);
+    });
+  };
+
+  renderTabs();
+  renderItems(menuData);
+
+  window._krono = {
+    menuData,
+    renderItems,
+    renderTabs
+  };
+});
+</script>
+
+</body>
+</html>
