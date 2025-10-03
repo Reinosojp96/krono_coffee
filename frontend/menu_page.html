@@ -145,8 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const formatPrice = (price) => {
-
-    return `$${Number(price).toFixed(2)}`;
+    return `$${Number(price).toLocaleString("es-CO")}`;
   };
 
   const createCard = (item) => {
