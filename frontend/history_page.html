@@ -37,8 +37,8 @@
 
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 
- 
-    <div class="absolute inset-0 -z-10 bg-cover bg-center" style='background-image: url("../frontend/images/fondo.jpg");'></div>
+
+    <div class="absolute inset-0 -z-10 bg-cover bg-center" style='background-image: url("./images/fondo.jpg");'></div>
     <div class="absolute inset-0 -z-10 bg-black/40"></div>
 
 
@@ -101,7 +101,38 @@
           </div>
           <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
 
-            <div class="w-full h-full bg-center bg-cover" style='background-image: url("AQUI_TU_IMAGEN_DE_HISTORIA.jpg");'></div>
+
+
+
+          <div class="relative w-full h-80 overflow-hidden rounded-xl shadow-lg">
+
+          <div class="flex w-[400%] h-full animate-slide">
+            <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('./images/historia.jpg');"></div>
+            <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('./images/historia2.jpg');"></div>
+            <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('./images/historia3.jpg');"></div>
+            <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('./images/historia4.jpg');"></div>
+          </div>
+        </div>
+
+<style>
+@keyframes slide {
+  0%   { transform: translateX(0%); }
+  20%  { transform: translateX(0%); }
+  25%  { transform: translateX(-25%); }
+  45%  { transform: translateX(-25%); }
+  50%  { transform: translateX(-50%); }
+  70%  { transform: translateX(-50%); }
+  75%  { transform: translateX(-75%); }
+  95%  { transform: translateX(-75%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-slide {
+  animation: slide 20s infinite;
+  animation-timing-function: ease-in-out;
+}
+</style>
+
           </div>
         </div>
       </div>
