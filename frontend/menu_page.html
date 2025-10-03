@@ -41,7 +41,7 @@
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
 
 
-<div class="flex flex-col min-h-screen bg-cover bg-center" style="background-image: url('../images/fondo.jpg');">
+<div class="flex flex-col min-h-screen bg-cover bg-center" style="background-image: url('../frontend/images/fondo.jpg');">
 
 
 <header class="sticky top-0 z-10 border-b border-border-light dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
@@ -117,21 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 11, name: "Agua en Bolsa", description: "300ml", price: 300, category: "BEBIDAS", imageUrl: "https://www.lamejor.com.co/img/p_agua.png" },
     { id: 12, name: "Pan de Bono", description: "", price: 1000, category: "PANADERÍA", imageUrl: "https://i.ytimg.com/vi/9qXkJR7x1hw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDHww6AO6dTKH6-biYPeOX-gU2k8g" },
     { id: 13, name: "Pan Cuadrado", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://supermercadoslacanasta.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTAxNjgxLCJwdXIiOiJibG9iX2lkIn19--1a715ad17e58f891cbd6c0f6ee197d14ef150fe7/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbNjAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--121ebfcd4293f99df590ac1a60ec2d53d6f75b42/13074?locale=es" },
-    { id: 14, name: "Pan Calentano", description: "", price: 400, category: "PANADERÍA", imageUrl: "../images/calentano.jpg" },
-    { id: 15, name: "Pan Leche", description: "", price: 400, category: "PANADERÍA", imageUrl: "../images/pandeleche.jpg" },
+    { id: 14, name: "Pan Calentano", description: "", price: 400, category: "PANADERÍA", imageUrl: "../frontend/images/calentano.jpg" },
+    { id: 15, name: "Pan Leche", description: "", price: 400, category: "PANADERÍA", imageUrl: "../frontend/images/pandeleche.jpg" },
     { id: 16, name: "Pan Rollo", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://b2bmarketplace.procolombia.co/sites/default/files/styles/slider_image_product/public/2019-23/pan_rollo_1.png" },
-    { id: 17, name: "Pan Mojicón", description: "", price: 400, category: "PANADERÍA", imageUrl: "../images/mojicon.jpg" },
-    { id: 18, name: "Bolsa de Té (5u)", description: "", price: 2000, category: "PANADERÍA", imageUrl: "../images/te.jpg" },
+    { id: 17, name: "Pan Mojicón", description: "", price: 400, category: "PANADERÍA", imageUrl: "../frontend/images/mojicon.jpg" },
+    { id: 18, name: "Bolsa de Té (5u)", description: "", price: 2000, category: "PANADERÍA", imageUrl: "../frontend/images/te.jpg" },
     { id: 19, name: "Galleta de Coco", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://www.infobae.com/new-resizer/cCb-eRXtR3IhQ5nLta_cg4WZ0MA=/arc-anglerfish-arc2-prod-infobae/public/MYVN25FXGREGZATCP4MBB3TK6E.jpg" },
-    { id: 20, name: "Croissant (Queso)", description: "Grande", price: 1000, category: "PANADERÍA", imageUrl: "../images/111111111111.jpg" },
+    { id: 20, name: "Croissant (Queso)", description: "Grande", price: 1000, category: "PANADERÍA", imageUrl: "../frontend/images/111111111111.jpg" },
     { id: 21, name: "Pan Concha", description: "", price: 1000, category: "PANADERÍA", imageUrl: "https://horneadoslaquinta.com.co/wp-content/uploads/2022/03/concha.png" },
     { id: 23, name: "Pan Queso", description: "Grande", price: 2500, category: "PANADERÍA", imageUrl: "https://peterpan24horas.com/storage/2019/07/P2200.jpg" },
-    { id: 24, name: "Almojábana", description: "", price: 1000, category: "PANADERÍA", imageUrl: "../images/almojabana.jpg" },
+    { id: 24, name: "Almojábana", description: "", price: 1000, category: "PANADERÍA", imageUrl: "../frontend/images/almojabana.jpg" },
     { id: 25, name: "Hojaldra", description: "", price: 1000, category: "PANADERÍA", imageUrl: "https://elsuper.com.co/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTgxNjc2NSwicHVyIjoiYmxvYl9pZCJ9fQ==--3a4d7c0294544339a3ec8360401c0e18fdb83419/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZml0IjpbNjAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--121ebfcd4293f99df590ac1a60ec2d53d6f75b42/28773?locale=es" },
     { id: 26, name: "Tostadas", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://tortasytortas.com.co/images/virtuemart/product/resized/13_640x200.jpg" },
     { id: 27, name: "Pera Roja", description: "", price: 500, category: "PANADERÍA", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC8NDzCQ045_sBZ5Dc8WYHaVelo3PjEfD4aKzUBEDZ-0aIHi4h_i-BlJyezkTEBXG5i6A&usqp=CAU" },
     { id: 28, name: "Cuca", description: "", price: 400, category: "PANADERÍA", imageUrl: "https://www.vanguardia.com/resizer/v2/prepararan-la-cuca-mas-grande-de-santander-un-homenaje-al-sabor-de-las-abuelas-LNIDCH55QZFUTKDKQHHYNFUODU.jpg?auth=abeaa6a61932b95d123244e7ac12ce17a9397e8363865bd4cf61b7ee98715743&smart=true&width=1200&height=800&quality=70" },
-    { id: 29, name: "panderos", description: "", price: 500, category: "PANADERÍA", imageUrl: "../images/panderos.jpg" }
+    { id: 29, name: "panderos", description: "", price: 500, category: "PANADERÍA", imageUrl: "../frontend/images/panderos.jpg" }
 ];
 
 
