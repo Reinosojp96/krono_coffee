@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Coffee Pan - Nuestra Historia</title>
+  <title>CoffeePan - Nuestra Historia</title>
   <script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -48,12 +48,9 @@
     <div class="flex items-center justify-between h-20">
       
       <div class="flex items-center gap-3">
-        <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_6_543)">
-            <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
-          </g>
-        </svg>
-        <h1 class="text-xl font-bold">Coffee Pan</h1>
+        <h1 class="text-xl font-bold">CoffeePan</h1>
+        <video autoplay loop muted class="h-12 w-12 rounded-full border-4 border-transparent shadow-lg">
+              <source src="./images/video.mp4" type="video/mp4">
       </div>
 
       
@@ -93,44 +90,53 @@
           <div class="space-y-6">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Nuestra Historia</h1>
             <p class="text-lg leading-relaxed">
-              En el corazón de San Antonio, CofféPan nació de la pasión por el café y la rica tradición culinaria de la región. Inspirados en los sabores auténticos y la calidez de San Antonio, hemos creado un espacio donde cada taza cuenta una historia y cada plato es una obra de arte.
+              En el corazón de San Antonio, CoffeePan nació de la pasión por el café y la rica tradición culinaria de la región. Inspirados en los sabores auténticos y la calidez de San Antonio, hemos creado un espacio donde cada taza cuenta una historia y cada plato es una obra de arte.
             </p>
             <p class="text-lg leading-relaxed">
               Nuestra misión es ofrecer una experiencia inigualable, combinando ingredientes frescos y locales con técnicas innovadoras. Te invitamos a ser parte de nuestra historia, disfrutando de un ambiente acogedor y un servicio excepcional.
             </p>
           </div>
           <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+  <div class="relative w-full h-80 overflow-hidden rounded-xl shadow-lg">
+    
+    <!-- Contenedor que se mueve -->
+    <div class="flex w-[500%] h-full animate-slide">
+      <div class="w-1/5 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia.jpg');"></div>
+      <div class="w-1/5 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia2.jpg');"></div>
+      <div class="w-1/5 h-full bg-cover bg-center" style="background-image: url('./images/historia3.jpg');"></div>
+      <div class="w-1/5 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia4.jpg');"></div>
+      <div class="w-1/5 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia5.jpg');"></div>
+    </div>
 
-
-
-
-          <div class="relative w-full h-80 overflow-hidden rounded-xl shadow-lg">
-
-          <div class="flex w-[400%] h-full animate-slide">
-            <div class="w-1/4 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia.jpg')  ;"></div>
-            <div class="w-1/4 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia2.jpg');"></div>
-            <div class="w-1/4 h-full bg-cover bg-center" style="background-image: url('./images/historia3.jpg');"></div>
-            <div class="w-1/4 h-full bg-contain bg-center bg-no-repeat" style="background-image: url('./images/historia4.jpg');"></div>
-          </div>
-        </div>
+  </div>
+</div>
 
 <style>
 @keyframes slide {
   0%   { transform: translateX(0%); }
-  20%  { transform: translateX(0%); }
-  25%  { transform: translateX(-25%); }
-  45%  { transform: translateX(-25%); }
-  50%  { transform: translateX(-50%); }
-  70%  { transform: translateX(-50%); }
-  75%  { transform: translateX(-75%); }
-  95%  { transform: translateX(-75%); }
+  15%  { transform: translateX(0%); }
+
+  20%  { transform: translateX(-20%); }
+  35%  { transform: translateX(-20%); }
+
+  40%  { transform: translateX(-40%); }
+  55%  { transform: translateX(-40%); }
+
+  60%  { transform: translateX(-60%); }
+  75%  { transform: translateX(-60%); }
+
+  80%  { transform: translateX(-80%); }
+  95%  { transform: translateX(-80%); }
+
   100% { transform: translateX(0%); }
 }
 
 .animate-slide {
   animation: slide 20s infinite;
-  animation-timing-function: ease-in-out;
 }
+</style>
+
+
 </style>
 
           </div>
